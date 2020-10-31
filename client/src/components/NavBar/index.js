@@ -6,7 +6,6 @@ import "./style.css";
 function Navbar() {
     return (
 
-
         <nav className="navbar navbar-expand-lg text-light">
             <div className="container">
                 <Link className="navbar-brand" to="/">Google Books</Link>

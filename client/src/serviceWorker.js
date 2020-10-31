@@ -9,7 +9,7 @@ const isLocalhost = Boolean(
   
   export function register(config) {
     if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
-      // The URL constructor is available in all browsers that support SW.
+      
       const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
       if (publicUrl.origin !== window.location.origin) {
         return;
@@ -19,7 +19,7 @@ const isLocalhost = Boolean(
         const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
   
         if (isLocalhost) {
-          // This is running on localhost. Let's check if a service worker still exists or not.
+          // running on localhost
           checkValidServiceWorker(swUrl, config);
           navigator.serviceWorker.ready.then(() => {
             console.log('serviceworker');
@@ -51,9 +51,8 @@ const isLocalhost = Boolean(
                   config.onUpdate(registration);
                 }
               } else {
-                console.log('Content is cached for offline use.');
+                // console.log('Content is cached for offline use.');
   
-                // Execute callback
                 if (config && config.onSuccess) {
                   config.onSuccess(registration);
                 }
@@ -68,28 +67,28 @@ const isLocalhost = Boolean(
   }
   
   function checkValidServiceWorker(swUrl, config) {
-    // Check if the service worker can be found. If it can't reload the page.
+    // if the service worker can be found
     fetch(swUrl)
       .then(response => {
-        // Ensure service worker exists, and that we really are getting a JS file.
+        // see if service worker exists
         const contentType = response.headers.get('content-type');
         if (
           response.status === 404 ||
           (contentType != null && contentType.indexOf('javascript') === -1)
         ) {
-          // No service worker found. Probably a different app. Reload the page.
+          // No service worker found
           navigator.serviceWorker.ready.then(registration => {
             registration.unregister().then(() => {
               window.location.reload();
             });
           });
         } else {
-          // Service worker found. Proceed as normal.
+          // Service worker found
           registerValidSW(swUrl, config);
         }
       })
       .catch(() => {
-        console.log('No internet connection found');
+        // console.log('No internet connection found');
       });
   }
   
