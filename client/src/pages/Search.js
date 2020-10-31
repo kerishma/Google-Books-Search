@@ -7,6 +7,7 @@ class Search extends React.Component {
   state = {
     value: '',
     books: [],
+    search: ''
   };
 
   componentDidMount() {
@@ -41,8 +42,8 @@ class Search extends React.Component {
   };
 
   handleInputChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
+    const { name, value } = event.target;
+    console.log (name, value);
     this.setState({
       [name]: value,
     });
